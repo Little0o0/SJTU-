@@ -4,7 +4,6 @@
 \input{preamble}
 
 \title{Algorithm}
-\author{Little0o0,lzn,jyh,cjz}
 \date{\today}
 
 \begin{document} 
@@ -317,7 +316,7 @@ BUT：为什么不从左到右扫描求和，当和成为负数的时候就舍�
      \paragraph{Hint:}\textbf{1.插入排序}假设知道应该如何对n-1个数进行排序。现在给定n个数，先对前n-1个数排序，然后通过扫描已排完序的n-1个数来确定第n个数应该插入的位置。复杂度$O(n^2)$，如果借助二分搜索进行确定应该插入的位置，则总体比较次数为O(nlogn)。但数据移动次数仍为$O(n^2)$，所得算法仍然是$O(n^2)$的。\\
      \textbf{2.选择排序}首先选出最大的数，然后放在其应处的位置上（只需和该位置上原有的数交换即可），然后递归地对剩余的数进行排序。由于选出最大数需n-1次比较，总的比较次数仍为$O(n^2)$。数据移动的次数为O(n)，总的时间复杂度还是$O(n^2)$\\
       \textbf{3.归并排序}首先将序列分成相等的两部分，然后将每个部分分别递归排序，最后把这两个有序部分按上述过程归并为一个有序序列。（分治法），总的比较次数为$O(nlogn)$，数据移动的次数同样是$O(nlogn)$，所以时间复杂度仍然是$O(nlogn)$。但是需要额外的储存空间。\\
-       \textbf{4.快速排序}假设知道某个数x满足：序列中一半的数大于等于x，另一半小于x。根据和x的大小关系，可以将序列一分为二。这样的分割需要n-1次比较。序列分割完之后，接着将每个子序列递归排序。比较次数和数据移动次数都是O(nlogn)，时间复杂度也是O(nlogn)。
+       \textbf{4.快速排序}假设知道某个数x满足：序列中一半的数大于等于x，另一半小于x。根据和x的大小关系，可以将序列一分为二。这样的分割需要n-1次比较。序列分割完之后，接着将每个子序列递归排序。比较次数和数据移动次数都是O(nlogn)，时间复杂度也是O(nlogn)。\\
        \textbf{4.堆排序}输入是数组A[1..n]。首先，数组中的元素重新排列成堆。若A是堆，则A[1]是数组的最大元素，交换A[1]和A[n]使A[n]中存储正确的那个元素。然后考察数组A[1..n-1]，同样地，将这个数组中的所有元素排列成堆（其实只需考虑新的A[1]），交换A[1]和A[n-1]，接着继续考察A[1..n-2]。总的来说，堆排序包括一次初始的建堆过程，n-1次元素交换和重排成堆。\\
        堆排序最坏情况下的运行时间是O(nlogn)，是一个原地置换排序算法。\\
        自顶而下：第i步最多需要$\lceil logi \rceil$次比较，故运行时间为O(nlogn)。\\
@@ -360,8 +359,10 @@ BUT：为什么不从左到右扫描求和，当和成为负数的时候就舍�
     \lstset{language=C}
     \begin{lstlisting}
     Algorithm String_Match(A,n,B,m) （KMP）
-    Input: A (a string of size n), B (a string of size m), and assume that next has been computed
-    Output: Start (the first index such that B is a substring of A starting at A[start]
+    Input: A (a string of size n), B (a string of size m), 
+    and assume that next has been computed
+    Output: Start (the first index such that B is a substring 
+    of A starting at A[start]
         begin
             j:=1; i:=1;
             Start:=0;
